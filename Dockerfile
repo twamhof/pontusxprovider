@@ -22,10 +22,12 @@ WORKDIR /ocean-provider
 RUN python3.8 -m pip install --no-cache-dir setuptools wheel && \
     python3.8 -m pip install --no-cache-dir .
 
-ENV NETWORK_URL='http://127.0.0.1:8545'
+ENV NETWORK_URL='https://rpc.dev.pontus-x.eu'
 
 ENV PROVIDER_PRIVATE_KEY=''
 ENV PROVIDER_ADDRESS=''
+
+ENV AQUARIUS_URL='https://aquarius.pontus-x.eu'
 
 ENV AZURE_ACCOUNT_NAME=''
 ENV AZURE_ACCOUNT_KEY=''
