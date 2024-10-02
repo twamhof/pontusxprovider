@@ -5,7 +5,8 @@
 FROM python:3.8-slim-buster
 LABEL maintainer="Ocean Protocol <devops@oceanprotocol.com>"
 
-ARG VERSION
+ARG PROVIDER_PRIVATE_KEY
+ARG PROVIDER_ADDRESS
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
@@ -22,10 +23,12 @@ WORKDIR /ocean-provider
 RUN python3.8 -m pip install --no-cache-dir setuptools wheel && \
     python3.8 -m pip install --no-cache-dir .
 
-ENV NETWORK_URL='https://rpc.dev.pontus-x.eu'
+ENV NETWORK_URL='https://rpc.test.pontus-x.eu'
 
-ENV PROVIDER_PRIVATE_KEY=''
-ENV PROVIDER_ADDRESS=''
+ENV PROVIDER_PRIVATE_KEY=${PROVIDER_PRIVATE_KEY}
+ENV PROVIDER_ADDRESS=${PROVIDER_ADDRESS}
+
+ENV PROVIDER_FEE_TOKEN='0x5B190F9E2E721f8c811E4d584383E3d57b865C69'
 
 ENV AQUARIUS_URL='https://aquarius.pontus-x.eu'
 
@@ -38,6 +41,7 @@ ENV AZURE_CLIENT_SECRET=''
 ENV AZURE_TENANT_ID=''
 ENV AZURE_SUBSCRIPTION_ID=''
 
+ENV neu=''
 # do checksums only if file size < 5 Mb
 ENV MAX_CHECKSUM_LENGTH='5242880'
 
